@@ -7,7 +7,7 @@ Admin
 	* email:string
 	* name:string
 	* identification:string validation only digits
-	* cellphone:string validation only digits
+	* phone:string validation only digits
 	* createdAt
 	* updatedAt
 
@@ -25,6 +25,7 @@ Product
 ---
 
 	* name:string
+	* description:text
 	* barcode:string
 	* price:decimal
 	* points:integer
@@ -51,5 +52,6 @@ InvoiceDetail
 	* price:decimal (calculado) cantidad por precio en producto pero se persiste
 	* points:integer (calculado) cantidad por puntos en producto pero se persiste
 	* product:Product
+	* invoice:Invoice
 	* createdAt
 	* updatedAt
