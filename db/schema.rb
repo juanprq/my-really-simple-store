@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204021627) do
+ActiveRecord::Schema.define(version: 20150210155244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,9 +29,49 @@ ActiveRecord::Schema.define(version: 20150204021627) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "identification"
+    t.string   "phone"
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
+
+  create_table "clients", force: :cascade do |t|
+    t.string   "name"
+    t.string   "identification"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "invoice_details", force: :cascade do |t|
+    t.integer  "quantity"
+    t.decimal  "price",      precision: 10, scale: 2
+    t.integer  "points"
+    t.integer  "product_id"
+    t.integer  "invoice_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.integer  "admin_id"
+    t.integer  "client_id"
+    t.decimal  "total",      precision: 10, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "barcode"
+    t.decimal  "price",       precision: 10, scale: 2
+    t.integer  "points"
+    t.integer  "stock"
+    t.string   "photo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
