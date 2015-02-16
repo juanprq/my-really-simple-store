@@ -11,4 +11,18 @@
 #
 
 class Invoice < ActiveRecord::Base
+
+  belongs_to :admin
+  belongs_to :client
+  has_many :invoice_details
+
+  validates :admin, :client, :total, presence: true
+
+  before_save :calculate_total
+
+  private
+    def calculate_total
+      
+    end
+
 end
