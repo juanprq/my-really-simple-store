@@ -25,4 +25,8 @@ RSpec.describe Admin, type: :model do
   it 'fail digits identification validation' do
   	expect(FactoryGirl.build(:admin, identification: 'invalid')).to be_invalid
   end
+
+  it 'invoices' do
+    expect(FactoryGirl.build(:admin, invoices: [FactoryGirl.build(:invoice), FactoryGirl.build(:invoice)]).invoices.size).to be == 2
+  end
 end
