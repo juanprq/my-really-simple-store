@@ -25,4 +25,8 @@ RSpec.describe Client, type: :model do
   it 'fail with chars in identification' do
     expect(FactoryGirl.build(:client, identification: 'asddqwd')).to be_invalid
   end
+
+  it 'invoices' do
+    expect(FactoryGirl.build(:client, invoices: [FactoryGirl.build(:invoice), FactoryGirl.build(:invoice)]).invoices.size).to be == 2
+  end
 end
