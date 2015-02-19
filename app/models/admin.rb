@@ -23,6 +23,15 @@
 class Admin < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, 
+  	:recoverable, 
+  	:rememberable, 
+  	:trackable, 
+  	:validatable
+
+  	validates :name, :phone, :identification, presence: true
+  	validates_format_of :phone, :identification, with: /[0-9]+/, message: 'Solo se aceptan valores numericos'
+
+  	has_many :invoices
+
 end

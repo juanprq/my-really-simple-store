@@ -15,4 +15,7 @@
 #
 
 class Product < ActiveRecord::Base
+
+  validates :name, :barcode, :price, :points, :stock, presence: true
+
 end
