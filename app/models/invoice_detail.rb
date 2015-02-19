@@ -13,4 +13,10 @@
 #
 
 class InvoiceDetail < ActiveRecord::Base
+
+  belongs_to :product
+  belongs_to :invoice
+
+  validates :quantity, :price, :points, :product, :invoice, presence: true
+
 end

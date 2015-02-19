@@ -16,7 +16,7 @@ class Invoice < ActiveRecord::Base
   belongs_to :client
   has_many :invoice_details
 
-  validates :admin, :client, :total, presence: true
+  validates :admin, :client, :invoice_details, :total, presence: true
 
   before_save :calculate_total
 
