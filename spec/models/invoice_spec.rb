@@ -34,4 +34,6 @@ RSpec.describe Invoice, type: :model do
     expect(@invoice).to be_invalid
   end
 
+  it 'calculate_total'
+
 end

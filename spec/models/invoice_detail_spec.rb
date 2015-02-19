@@ -13,23 +13,38 @@ RSpec.describe InvoiceDetail, type: :model do
   end
 
   it 'fail with no quantity' do
-    expect(FactoryGirl.build(:invoice_detail, quantity: nil)).to be_invalid
+    @invoice_detail.quantity = nil
+    expect(@invoice_detail).to be_invalid
   end
 
   it 'fail with no price' do
-    expect(FactoryGirl.build(:invoice_detail, price: nil)).to be_invalid
+    @invoice_detail.price = nil
+    expect(@invoice_detail).to be_invalid
   end
 
   it 'fail with no points' do
-    expect(FactoryGirl.build(:invoice_detail, points: nil)).to be_invalid
+    @invoice_detail.points = nil
+    expect(@invoice_detail).to be_invalid
   end
 
   it 'fail with no product' do
-    expect(FactoryGirl.build(:invoice_detail, product: nil)).to be_invalid
+    @invoice_detail.product = nil
+    expect(@invoice_detail).to be_invalid
   end
 
   it 'fail with no invoice' do
-    expect(FactoryGirl.build(:invoice_detail, invoice: nil)).to be_invalid
+    @invoice_detail.invoice = nil
+    expect(@invoice_detail).to be_invalid
+  end
+
+  it 'calculate total' do
+    total = @invoice_detail.price * @invoice_detail.quantity
+    expect(@invoice_detail.total).to be == total
+  end
+
+  it 'calculate total points' do
+    total_points = @invoice_detail.points * @invoice_detail.quantity
+    expect(@invoice_detail.total_points).to be == total_points
   end
 
 end
