@@ -18,15 +18,23 @@ RSpec.describe Invoice, type: :model do
   end
 
   it 'fail with no client' do
-    expect(FactoryGirl.build(:invoice, client: nil)).to be_invalid
+    @invoice.client = nil
+    expect(@invoice).to be_invalid
   end
 
   it 'fail with no admin' do
-    expect(FactoryGirl.build(:invoice, admin: nil)).to be_invalid
+    @invoice.admin = nil
+    expect(@invoice).to be_invalid
   end
 
   it 'fail with no total' do
-    expect(FactoryGirl.build(:invoice, total: nil)).to be_invalid
+    @invoice.total = nil
+    expect(@invoice).to be_invalid
+  end
+
+  it 'fail with no total points' do
+    @invoice.total_points = nil
+    expect(@invoice).to be_invalid
   end
 
   it 'fail with no invoice_detail' do
@@ -34,6 +42,16 @@ RSpec.describe Invoice, type: :model do
     expect(@invoice).to be_invalid
   end
 
-  it 'calculate_total'
+  it 'calculate_total' do
+    total =  @invoice.invoice_details.map(&:total).reduce(&:+)
+    @invoice.save
+    expect(@invoice.total).to be == total
+  end
+
+  it 'calculate_total_points' do
+    total_points = @invoice.invoice_details.map(&:total_points).reduce(&:+)
+    @invoice.save
+    expect(@invoice.total_points).to be == total_points
+  end
 
 end
