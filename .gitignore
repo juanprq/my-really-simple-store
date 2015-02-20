@@ -13,3 +13,4 @@
 /tmp
 .env
 .env.*
+/vendor/assets/bower_components/*
