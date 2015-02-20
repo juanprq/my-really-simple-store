@@ -8,9 +8,6 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    .wrapper
-      = render 'layouts/header'
-      #page-wrapper
-        = flash_messages
-        = render 'layouts/page_title'
-        = yield
+    .container
+      = flash_messages
+      = yield
