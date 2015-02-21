@@ -16,5 +16,7 @@ class Client < ActiveRecord::Base
 	validates_format_of :identification, :phone, with: /[0-9]+/, message: 'Solo se aceptan valores numericos'
 
 	has_many :invoices
+
+  scope :by_name, -> {order(:name)}
 	
 end

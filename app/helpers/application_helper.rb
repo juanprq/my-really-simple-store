@@ -32,4 +32,12 @@ module ApplicationHelper
     end
   end
 
+  def navbar
+    content_tag :nav, class: 'navbar navbar-default' do
+      content_tag :div, class: 'container-fluid' do
+        yield
+      end
+    end
+  end
+
 end

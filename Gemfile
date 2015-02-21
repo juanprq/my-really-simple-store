@@ -18,6 +18,7 @@ gem 'bootstrap-sass', '~> 3.3.3'
 gem 'annotate'
 gem 'bower-rails'
 gem 'font-awesome-rails'
+gem 'will_paginate-bootstrap'
 
 group :development, :test do
   gem 'byebug'

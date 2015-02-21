@@ -1,19 +1,36 @@
-%h1 Listing clients
+- @view_name = 'Clientes'
 
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
-      
-  %tbody
-    - @clients.each do |client|
-      %tr
-        %td= link_to 'Show', client
-        %td= link_to 'Edit', edit_client_path(client)
-        %td= link_to 'Destroy', client, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+hay que hacer unos filtros...
+y hay que hacer paginador...
 %br
 
-= link_to 'New Client', new_client_path
+= navbar do
+  %ul.nav.navbar-nav.navbar-right
+    %li
+      = link_to 'Agregar cliente', new_client_path
+
+-if @clients and !@clients.empty?
+  .table-responsive
+    %table.table.table-hover
+      %thead
+        %tr
+          %th #
+          %th Nombre
+          %th Identificación
+          %th Teléfono
+          %th Acciones
+      %tbody
+        - @clients.each do |client|
+          %tr
+            %td client.id
+            %td client.name
+            %td client.identification
+            %td client.phone
+            %td
+              = link_to 'Ver', client
+              = link_to 'Editar', edit_client_path, client
+              = link_to 'Eliminar', client, method: :delete, data: {confirm: 'esta seguro?'}
+  = will_paginate @clients
+-else
+  .alert.alert-info
+    No hay clientes registrados en el sistema
