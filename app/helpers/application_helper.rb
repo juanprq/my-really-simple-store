@@ -23,4 +23,13 @@ module ApplicationHelper
     nil
   end
 
+  def title(view_name)
+    base_title = ENV['APP_NAME']
+    if view_name
+      "#{base_title} - #{view_name}"
+    else
+      base_title
+    end
+  end
+
 end
