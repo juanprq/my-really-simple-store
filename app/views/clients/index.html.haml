@@ -9,7 +9,7 @@ y hay que hacer paginador...
     %li
       = link_to 'Agregar cliente', new_client_path
 
--if @clients and !@clients.empty?
+- unless @clients.empty?
   .table-responsive
     %table.table.table-hover
       %thead
@@ -31,6 +31,6 @@ y hay que hacer paginador...
               = link_to 'Editar', edit_client_path, client
               = link_to 'Eliminar', client, method: :delete, data: {confirm: 'esta seguro?'}
   = will_paginate @clients
--else
+- else
   .alert.alert-info
     No hay clientes registrados en el sistema
