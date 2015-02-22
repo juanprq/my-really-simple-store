@@ -1,10 +1,15 @@
 - @view_name = 'Clientes'
 
-hay que hacer unos filtros...
-y hay que hacer paginador...
-%br
-
 = navbar do
+  .navbar-header
+    %span.navbar-brand
+      Filtrar
+  = form_tag clients_path, method: :get, class: 'navbar-form navbar-left', role: 'search' do
+    .form-group
+      = search_field_tag :q, @q, placeholder: 'Filtros', class: 'form-control'
+    %button.btn.btn-default{type: 'submit'}
+      Buscar
+
   %ul.nav.navbar-nav.navbar-right
     %li
       = link_to 'Agregar cliente', new_client_path
@@ -31,6 +36,3 @@ y hay que hacer paginador...
               = link_to 'Editar', edit_client_path, client
               = link_to 'Eliminar', client, method: :delete, data: {confirm: 'esta seguro?'}
   = will_paginate @clients
-- else
-  .alert.alert-info
-    No hay clientes registrados en el sistema

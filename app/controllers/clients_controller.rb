@@ -5,6 +5,8 @@ class ClientsController < ApplicationController
   # GET /clients.json
   def index
     @clients = Client.by_name.paginate page: params[:page], per_page: 30
+    @q = params[:q]
+    flash[:notice] = 'Sin resultados' if @clients.empty?
   end
 
   # GET /clients/1
