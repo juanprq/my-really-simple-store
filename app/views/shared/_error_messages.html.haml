@@ -1,0 +1,7 @@
+- if object.errors.any?
+  #error_explanation
+    .alert.alert-danger
+      = "El formulario contiene #{pluralize(object.errors.count, 'error', 'errores')}"
+    - object.errors.full_messages.each do |msg|
+      .alert.alert-danger
+        = msg

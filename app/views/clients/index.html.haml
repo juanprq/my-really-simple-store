@@ -27,12 +27,15 @@
       %tbody
         - @clients.each do |client|
           %tr
-            %td client.id
-            %td client.name
-            %td client.identification
-            %td client.phone
+            %td= client.id
+            %td= client.name
+            %td= client.identification
+            %td= client.phone
             %td
-              = link_to 'Ver', client
-              = link_to 'Editar', edit_client_path, client
-              = link_to 'Eliminar', client, method: :delete, data: {confirm: 'esta seguro?'}
+              = link_to client, class: 'btn btn-primary' do
+                %span.glyphicon.glyphicon-search
+              = link_to edit_client_path(client), class: 'btn btn-warning' do
+                %span.glyphicon.glyphicon-pencil
+              = link_to client, class: 'btn btn-danger', method: :delete, data: {confirm: 'esta seguro?'} do
+                %span.glyphicon.glyphicon-trash
   = will_paginate @clients
