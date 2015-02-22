@@ -22,13 +22,13 @@ class ClientsController < ApplicationController
     if @client.valid?
       redirect_to clients_path, notice: 'Cliente agregado con éxito'
     else
-      render :create
+      render :new
     end
   end
 
   def update
-    if @client.update(client_params)
-      redirect_to @client, notice: 'Cliente actualizado con éxito.'
+    if @client.update client_params
+      redirect_to clients_path, notice: 'Cliente actualizado con éxito.'
     else
       render :edit
     end
