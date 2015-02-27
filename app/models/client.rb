@@ -8,6 +8,7 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  phone          :string
+#  active         :boolean          default("true")
 #
 
 class Client < ActiveRecord::Base
