@@ -20,6 +20,7 @@ gem 'bower-rails'
 gem 'font-awesome-rails'
 gem 'will_paginate-bootstrap'
 gem 'jquery-turbolinks'
+gem 'rails-i18n', '~> 4.0.0'
 
 group :development, :test do
   gem 'byebug'

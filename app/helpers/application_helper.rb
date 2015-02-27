@@ -40,4 +40,11 @@ module ApplicationHelper
     end
   end
 
+  def info_panel(title, content)
+    content_tag :div, class: 'panel panel-info' do
+      concat content_tag(:div, title, class: 'panel-heading')
+      concat content_tag(:div, content, class: 'panel-body')
+    end
+  end
+
 end
