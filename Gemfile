@@ -19,6 +19,7 @@ gem 'annotate'
 gem 'bower-rails'
 gem 'font-awesome-rails'
 gem 'will_paginate-bootstrap'
+gem 'jquery-turbolinks'
 
 group :development, :test do
   gem 'byebug'

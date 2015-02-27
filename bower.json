@@ -9,7 +9,8 @@
   "vendor": {
     "name": "bower-rails generated vendor assets",
     "dependencies": {
-      "startbootstrap-sb-admin-2": "1.0.5"
+      "startbootstrap-sb-admin-2": "1.0.5",
+      "bootstrap-sweetalert": "0.4.3"
       // "three.js"    : "https://raw.github.com/mrdoob/three.js/master/build/three.js"
     }
   }

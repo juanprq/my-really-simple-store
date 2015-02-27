@@ -36,6 +36,6 @@
                 %span.glyphicon.glyphicon-search
               = link_to edit_client_path(client), class: 'btn btn-warning' do
                 %span.glyphicon.glyphicon-pencil
-              = link_to client, class: 'btn btn-danger', method: :delete, data: {confirm: 'esta seguro?'} do
+              = link_to client, class: 'btn btn-danger delete', data: {message: 'Se encuentra a punto de eliminar un cliente'} do
                 %span.glyphicon.glyphicon-trash
   = will_paginate @clients

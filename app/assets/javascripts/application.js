@@ -11,9 +11,48 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require bootstrap-sprockets
 //= require jquery_ujs
-//= require turbolinks
 //= require metisMenu/dist/metisMenu
 //= require startbootstrap-sb-admin-2/dist/js/sb-admin-2
+//= require bootstrap-sweetalert/lib/sweet-alert
 //= require_tree .
+//= require turbolinks
+(function($, swal){
+  $(document).ready(function(){
+    $('a.delete').click(function(event) {
+      event.preventDefault();
+      var link = $(this);
+      var href = link.attr('href');
+      var message = link.data('message');
+
+      // swal dialog to confirm the delete
+      swal({
+        title: '¿Se encuentra seguro?',
+        text: message,
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonClass: 'btn-danger',
+        confirmButtonText: 'Si eliminar registro!',
+        cancelButtonText: 'Cancelar',
+        closeOnConfirm: false
+      },
+      function(){
+        // confirm callback
+        var method = 'delete',
+          csrfToken = $('meta[name=csrf-token]').attr('content'),
+          csrfParam = $('meta[name=csrf-param]').attr('content'),
+          form = $('<form method="post" action="' + href + '"></form>'),
+          metadataInput = '<input name="_method" value="' + method + '" type="hidden" />';
+
+        if (csrfParam !== undefined && csrfToken !== undefined) {
+          metadataInput += '<input name="' + csrfParam + '" value="' + csrfToken + '" type="hidden" />';
+        }
+
+        form.hide().append(metadataInput).appendTo('body');
+        form.submit();
+      });
+    });
+  });
+})($, swal);
