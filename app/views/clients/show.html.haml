@@ -1,6 +1,12 @@
-%p#notice= notice
+- @view_name = 'Detalle del cliente'
 
+= info_panel 'id', @client.id
+= info_panel 'Nombre', @client.name
+= info_panel 'Identificación', @client.identification
+= info_panel 'Teléfono', @client.phone
+= info_panel 'Fecha de creación', @client.created_at.strftime('%F - %T')
+= info_panel 'Fecha de modificación', @client.updated_at.strftime('%F - %T')
 
-= link_to 'Edit', edit_client_path(@client)
-\|
-= link_to 'Back', clients_path
+= link_to 'Editar', edit_client_path(@client), class: 'btn btn-warning btn-outline'
+= link_to 'Eliminar', @client, class: 'btn btn-danger btn-outline delete', data: {message: 'Se encuentra a punto de eliminar un cliente'}
+= link_to 'Atrás', clients_path, class: 'btn btn-primary btn-outline'

@@ -13,8 +13,11 @@
 class Client < ActiveRecord::Base
 
 	validates :name, :identification, :phone, presence: true
-	validates_format_of :identification, :phone, with: /[0-9]+/, message: 'Solo se aceptan valores numericos'
+	validates :identification, :phone, numericality: {only_integer: true}
+  validates_uniqueness_of :identification
 
 	has_many :invoices
+
+  scope :by_name, -> {order(:name)}
 	
 end

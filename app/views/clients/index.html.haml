@@ -1,19 +1,41 @@
-%h1 Listing clients
+- @view_name = 'Clientes'
 
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
-      
-  %tbody
-    - @clients.each do |client|
-      %tr
-        %td= link_to 'Show', client
-        %td= link_to 'Edit', edit_client_path(client)
-        %td= link_to 'Destroy', client, :method => :delete, :data => { :confirm => 'Are you sure?' }
+= navbar do
+  .navbar-header
+    %span.navbar-brand
+      Filtrar
+  = form_tag clients_path, method: :get, class: 'navbar-form navbar-left', role: 'search' do
+    .form-group
+      = search_field_tag :q, @q, placeholder: 'Filtros', class: 'form-control'
+    %button.btn.btn-default{type: 'submit'}
+      Buscar
 
-%br
+  %ul.nav.navbar-nav.navbar-right
+    %li
+      = link_to 'Agregar cliente', new_client_path
 
-= link_to 'New Client', new_client_path
+- unless @clients.empty?
+  .table-responsive
+    %table.table.table-hover
+      %thead
+        %tr
+          %th #
+          %th Nombre
+          %th Identificación
+          %th Teléfono
+          %th Acciones
+      %tbody
+        - @clients.each do |client|
+          %tr
+            %td= client.id
+            %td= client.name
+            %td= client.identification
+            %td= client.phone
+            %td
+              = link_to client, class: 'btn btn-primary' do
+                %span.glyphicon.glyphicon-search
+              = link_to edit_client_path(client), class: 'btn btn-warning' do
+                %span.glyphicon.glyphicon-pencil
+              = link_to client, class: 'btn btn-danger delete', data: {message: 'Se encuentra a punto de eliminar un cliente'} do
+                %span.glyphicon.glyphicon-trash
+  = will_paginate @clients
