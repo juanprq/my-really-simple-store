@@ -11,14 +11,12 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require metisMenu/dist/metisMenu
 //= require startbootstrap-sb-admin-2/dist/js/sb-admin-2
 //= require bootstrap-sweetalert/lib/sweet-alert
 //= require_tree .
-//= require turbolinks
 (function($, swal){
   $(document).ready(function(){
     $('a.inactivate').click(function(event) {
