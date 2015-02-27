@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   def index
-    @clients = Client.by_name.paginate page: params[:page], per_page: 30
+    @clients = Client.all_actives.by_name.paginate page: params[:page], per_page: 30
     @q = params[:q]
     flash[:notice] = 'Sin resultados' if @clients.empty?
   end
@@ -35,14 +35,14 @@ class ClientsController < ApplicationController
   end
 
   def destroy
-    @client.destroy
-    redirect_to clients_url, notice: 'Cliente eliminado con éxito.'
+    @client.inactivate
+    redirect_to clients_url, notice: 'Cliente inactivado con éxito.'
   end
 
   private
 
     def set_client
-      @client = Client.find(params[:id])
+      @client = Client.all_actives.find(params[:id])
     end
 
     def client_params

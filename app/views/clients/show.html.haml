@@ -8,5 +8,5 @@
 = info_panel 'Fecha de modificación', @client.updated_at.strftime('%F - %T')
 
 = link_to 'Editar', edit_client_path(@client), class: 'btn btn-warning btn-outline'
-= link_to 'Eliminar', @client, class: 'btn btn-danger btn-outline delete', data: {message: 'Se encuentra a punto de eliminar un cliente'}
+= link_to 'Eliminar', @client, class: 'btn btn-danger btn-outline inactivate', data: {message: 'Se encuentra a punto de inactivar un cliente'}
 = link_to 'Atrás', clients_path, class: 'btn btn-primary btn-outline'

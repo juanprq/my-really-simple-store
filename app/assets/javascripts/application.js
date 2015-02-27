@@ -21,7 +21,7 @@
 //= require turbolinks
 (function($, swal){
   $(document).ready(function(){
-    $('a.delete').click(function(event) {
+    $('a.inactivate').click(function(event) {
       event.preventDefault();
       var link = $(this);
       var href = link.attr('href');
@@ -34,7 +34,7 @@
         type: 'warning',
         showCancelButton: true,
         confirmButtonClass: 'btn-danger',
-        confirmButtonText: 'Si eliminar registro!',
+        confirmButtonText: '!Inactivar registro!',
         cancelButtonText: 'Cancelar',
         closeOnConfirm: false
       },
