@@ -13,6 +13,11 @@
 #
 
 class Client < ActiveRecord::Base
+  include PgSearch
+
+  pg_search_scope :search_by_all,
+    against: [:name, :identification, :phone, :email],
+    using: {tsearch: {any_word: true}}
 
 	validates :name, :identification, :phone, :email, presence: true
 	validates :identification, :phone, numericality: {only_integer: true}

@@ -2,8 +2,12 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   def index
-    @clients = Client.all_actives.by_name.paginate page: params[:page], per_page: 30
     @q = params[:q]
+    query = Client.all_actives
+    if @q
+      query = query.search_by_all @q
+    end
+    @clients = query.by_name.paginate page: params[:page], per_page: 30
     flash[:notice] = 'Sin resultados' if @clients.empty?
   end
 

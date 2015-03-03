@@ -20,6 +20,7 @@ gem 'font-awesome-rails'
 gem 'will_paginate-bootstrap'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'email_validator'
+gem 'pg_search'
 
 group :development, :test do
   gem 'byebug'
