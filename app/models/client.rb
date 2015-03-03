@@ -8,6 +8,7 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  phone          :string
+#  active         :boolean          default("true")
 #
 
 class Client < ActiveRecord::Base
@@ -19,5 +20,11 @@ class Client < ActiveRecord::Base
 	has_many :invoices
 
   scope :by_name, -> {order(:name)}
+  scope :all_actives, -> {where(active: true)}
 	
+  def inactivate
+    self.active = false
+    save
+  end
+
 end

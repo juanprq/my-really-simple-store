@@ -11,17 +11,15 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require metisMenu/dist/metisMenu
 //= require startbootstrap-sb-admin-2/dist/js/sb-admin-2
 //= require bootstrap-sweetalert/lib/sweet-alert
 //= require_tree .
-//= require turbolinks
 (function($, swal){
   $(document).ready(function(){
-    $('a.delete').click(function(event) {
+    $('a.inactivate').click(function(event) {
       event.preventDefault();
       var link = $(this);
       var href = link.attr('href');
@@ -34,7 +32,7 @@
         type: 'warning',
         showCancelButton: true,
         confirmButtonClass: 'btn-danger',
-        confirmButtonText: 'Si eliminar registro!',
+        confirmButtonText: '!Inactivar registro!',
         cancelButtonText: 'Cancelar',
         closeOnConfirm: false
       },

@@ -15,5 +15,5 @@
 
   = f.submit 'Guardar', class: 'btn btn-success btn-outline'
   - unless @client.new_record?
-    = link_to 'Eliminar', @client, class: 'btn btn-danger btn-outline delete', data: {message: 'Se encuentra a punto de eliminar un cliente'}
+    = link_to 'Eliminar', @client, class: 'btn btn-danger btn-outline inactivate', data: {message: 'Se encuentra a punto de inactivar un cliente'}
   = link_to 'Atrás', clients_path, class: 'btn btn-primary btn-outline'
