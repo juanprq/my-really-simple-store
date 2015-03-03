@@ -81,6 +81,8 @@ GEM
     dotenv (1.0.2)
     dotenv-rails (1.0.2)
       dotenv (= 1.0.2)
+    email_validator (1.5.0)
+      activemodel
     erubis (2.7.0)
     execjs (2.2.2)
     factory_girl (4.5.0)
@@ -236,6 +238,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   dotenv-rails
+  email_validator
   factory_girl_rails
   font-awesome-rails
   haml-rails (~> 0.8)
