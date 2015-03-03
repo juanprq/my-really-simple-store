@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303150306) do
+ActiveRecord::Schema.define(version: 20150303155528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20150303150306) do
     t.datetime "updated_at"
     t.string   "phone"
     t.boolean  "active",         default: true
+    t.string   "email"
   end
 
   create_table "invoice_details", force: :cascade do |t|

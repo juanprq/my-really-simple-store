@@ -9,13 +9,15 @@
 #  updated_at     :datetime
 #  phone          :string
 #  active         :boolean          default("true")
+#  email          :string
 #
 
 class Client < ActiveRecord::Base
 
-	validates :name, :identification, :phone, presence: true
+	validates :name, :identification, :phone, :email, presence: true
 	validates :identification, :phone, numericality: {only_integer: true}
-  validates_uniqueness_of :identification
+  validates :email, email: true
+  validates_uniqueness_of :identification, :email
 
 	has_many :invoices
 
