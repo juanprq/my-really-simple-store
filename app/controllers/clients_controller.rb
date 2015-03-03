@@ -36,6 +36,7 @@ class ClientsController < ApplicationController
 
   def destroy
     @client.inactivate
+    TrashedRecord.create_trash @client
     redirect_to clients_url, notice: 'Cliente inactivado con éxito.'
   end
 
