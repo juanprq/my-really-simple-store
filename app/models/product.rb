@@ -13,6 +13,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  active      :boolean          default("true")
+#  game_id     :integer
 #
 
 class Product < ActiveRecord::Base
