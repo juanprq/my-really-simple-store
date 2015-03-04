@@ -12,10 +12,16 @@
 #  photo       :string
 #  created_at  :datetime
 #  updated_at  :datetime
+#  active      :boolean          default("true")
+#  game_id     :integer
 #
 
 class Product < ActiveRecord::Base
+  include TrasheableModel
+  include PgSearch
 
   validates :name, :barcode, :price, :points, :stock, presence: true
+
+  scope :by_name, -> {order(:name)}
 
 end

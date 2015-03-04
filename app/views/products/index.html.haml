@@ -1,0 +1,38 @@
+- @view_name = 'Productos'
+
+= render 'shared/resource_navbar', {link_message: 'Agregar product', resource: Product}
+
+- unless @products.empty?
+  .row
+    - @products.each do |product|
+      .col-md-6.col-lg-4
+        .panel.panel-default
+          .panel-heading
+            = link_to product.name, product
+          .panel-body
+            .row
+              .col-md-5
+                %img.img-thumbnail{src: 'http://placehold.it/300x300'}
+              .col-md-7
+                .table-responsive
+                %table.table
+                  %tr
+                    %td Precio
+                    %td= product.price
+                  %tr
+                    %td Puntos
+                    %td= product.points
+                  %tr
+                    %td Stock
+                    %td= product.stock
+            .row
+              .col-md-12
+                %p= product.description
+          .panel-footer.text-right
+            = link_to product, class: 'btn btn-primary' do
+              %span.glyphicon.glyphicon-search
+            = link_to edit_product_path(product), class: 'btn btn-warning' do
+              %span.glyphicon.glyphicon-pencil
+            = link_to product, class: 'btn btn-danger inactivate', data: {message: 'Se encuentra a punto de inactivar un producto'} do
+              %span.glyphicon.glyphicon-trash
+  = will_paginate @products
