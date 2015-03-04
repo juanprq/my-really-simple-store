@@ -4,11 +4,11 @@ class ClientsController < ApplicationController
   def index
     @q = params[:q]
     query = Client.all_actives
-    if @q
+    if @q and !@q.empty?
       query = query.search_by_all @q
     end
     @clients = query.by_name.paginate page: params[:page], per_page: 30
-    flash[:notice] = 'Sin resultados' if @clients.empty?
+    flash[:notice] = 'Sin resultados.' if @clients.empty?
   end
 
   def show
@@ -51,6 +51,6 @@ class ClientsController < ApplicationController
     end
 
     def client_params
-      params.require(:client).permit(:name, :identification, :phone)
+      params.require(:client).permit(:name, :identification, :phone, :email)
     end
 end

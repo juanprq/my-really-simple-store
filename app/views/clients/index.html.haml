@@ -1,18 +1,6 @@
 - @view_name = 'Clientes'
 
-= navbar do
-  .navbar-header
-    %span.navbar-brand
-      Filtrar
-  = form_tag clients_path, method: :get, class: 'navbar-form navbar-left', role: 'search' do
-    .form-group
-      = search_field_tag :q, @q, placeholder: 'Filtros', class: 'form-control'
-    %button.btn.btn-default{type: 'submit'}
-      Buscar
-
-  %ul.nav.navbar-nav.navbar-right
-    %li
-      = link_to 'Agregar cliente', new_client_path
+= render 'shared/resource_navbar', link_message: 'Agregar cliente', resource: Client
 
 - unless @clients.empty?
   .table-responsive

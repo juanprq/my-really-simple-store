@@ -1,0 +1,11 @@
+- @view_name = 'Detalle del administrador'
+
+= info_panel 'id', @admin.id
+= info_panel 'Nombre', @admin.name
+= info_panel 'Identificación', @admin.identification
+= info_panel 'Correo electrónico', @admin.email
+= info_panel 'Teléfono', @admin.phone
+
+= link_to 'Editar', edit_admin_path(@admin), class: 'btn btn-warning btn-outline'
+= link_to 'Eliminar', @admin, class: 'btn btn-danger btn-outline delete', data: {message: 'Se encuentra a punto de eliminar un administrador'}
+= link_to 'Atrás', admins_path, class: 'btn btn-primary btn-outline'

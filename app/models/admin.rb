@@ -29,9 +29,11 @@ class Admin < ActiveRecord::Base
   	:trackable, 
   	:validatable
 
-  	validates :name, :phone, :identification, presence: true
-  	validates_format_of :phone, :identification, with: /[0-9]+/, message: 'Solo se aceptan valores numericos'
+	validates :name, :phone, :identification, presence: true
+	validates :identification, :phone, numericality: {only_integer: true}
 
-  	has_many :invoices
+	has_many :invoices
+
+  scope :by_email, -> {order(:email)}
 
 end
