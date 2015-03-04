@@ -1,8 +1,8 @@
 - @view_name = 'Juegos'
 
-= render 'shared/resource_navbar', link_message: 'Agregar juego', resource: @Game
+= render 'shared/resource_navbar', link_message: 'Agregar juego', resource: Game
 
-- unless @games.empty
+- unless @games.empty?
   .table-responsive
     %table.table.table-hover
       %thead
