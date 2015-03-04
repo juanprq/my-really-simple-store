@@ -13,6 +13,7 @@
 #
 
 class Client < ActiveRecord::Base
+  include TrasheableModel
   include PgSearch
 
   pg_search_scope :search_by_all,
@@ -27,11 +28,5 @@ class Client < ActiveRecord::Base
 	has_many :invoices
 
   scope :by_name, -> {order(:name)}
-  scope :all_actives, -> {where(active: true)}
-	
-  def inactivate
-    self.active = false
-    save
-  end
 
 end
