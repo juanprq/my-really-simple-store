@@ -47,4 +47,14 @@ module ApplicationHelper
     end
   end
 
+  def get_new_path(resource)
+    resource_name = resource.name.downcase
+    eval("new_#{resource_name}_path")
+  end
+
+  def get_index_path(resource)
+    resource_name = resource.name.downcase.pluralize
+    eval("#{resource_name}_path")
+  end
+
 end

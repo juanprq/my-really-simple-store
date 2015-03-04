@@ -19,9 +19,8 @@
 //= require_tree .
 (function($, swal){
   $(document).ready(function(){
-    $('a.inactivate').click(function(event) {
-      event.preventDefault();
-      var link = $(this);
+
+    var openDialog = function(link, buttonMessage) {
       var href = link.attr('href');
       var message = link.data('message');
 
@@ -32,7 +31,7 @@
         type: 'warning',
         showCancelButton: true,
         confirmButtonClass: 'btn-danger',
-        confirmButtonText: '!Inactivar registro!',
+        confirmButtonText: buttonMessage,
         cancelButtonText: 'Cancelar',
         closeOnConfirm: false
       },
@@ -51,6 +50,20 @@
         form.hide().append(metadataInput).appendTo('body');
         form.submit();
       });
+    };
+
+    $('a.inactivate').click(function(event) {
+      event.preventDefault();
+      var link = $(this);
+      openDialog(link, '¡Inactivar Registro!');
     });
+
+    $('a.delete').click(function(event) {
+      event.preventDefault();
+      var link = $(this);
+      openDialog(link, '¡Eliminar Registro!');
+      return false;
+    });
+
   });
 })($, swal);

@@ -1,0 +1,13 @@
+= navbar do
+  .navbar-header
+    %span.navbar-brand
+      Filtrar
+  = form_tag get_index_path(resource), method: :get, class: 'navbar-form navbar-left', role: 'search' do
+    .form-group
+      = search_field_tag :q, @q, placeholder: 'Filtros', class: 'form-control'
+    %button.btn.btn-default{type: 'submit'}
+      Buscar
+
+  %ul.nav.navbar-nav.navbar-right
+    %li
+      = link_to link_message, get_new_path(resource)
