@@ -1,6 +1,10 @@
-%p#notice= notice
+- @view_name = 'Detalle de juego'
 
+= info_panel 'id', @game.id
+= info_panel 'Nombre', @game.name
+= info_panel 'Imagen', 'Falta... yo creo que esta va arriba'
+= info_panel 'Descripción', @game.description
 
-= link_to 'Edit', edit_game_path(@game)
-\|
-= link_to 'Back', games_path
+= link_to 'Editar', edit_game_path(@game), class: 'btn btn-warning btn-outline'
+= link_to 'Eliminar', @game, class: 'btn btn-danger btn-outline inactivate', data: {message: 'Se encuentra a punto de inactivar un juego'}
+= link_to 'Atrás', games_path, class: 'btn btn-primary btn-outline'
