@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to admins_path, notice: 'Producto creado con éxito.'
+      redirect_to products_path, notice: 'Producto creado con éxito.'
     else
       render :new
     end
@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.inactivate
     TrashedRecord.create_trash @product
-    redirect_to clients_url, notice: 'Producto inactivado con éxito.'
+    redirect_to admins_url, notice: 'Producto inactivado con éxito.'
   end
 
   private
