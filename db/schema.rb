@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303191110) do
+ActiveRecord::Schema.define(version: 20150304164748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20150303191110) do
     t.string   "photo"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active",                               default: true
   end
 
   create_table "trashed_records", force: :cascade do |t|

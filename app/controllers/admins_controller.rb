@@ -25,7 +25,7 @@ class AdminsController < ApplicationController
     @admin = Admin.new(admin_params)
 
     if @admin.save
-      redirect_to @admin, notice: 'Administrador agregado con éxito.'
+      redirect_to admins_path, notice: 'Administrador agregado con éxito.'
     else
       render :new
     end
