@@ -2,7 +2,12 @@ class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
 
   def index
-    @admins = Admin.all.by_email.paginate page: params[:page], per_page: 30
+    @q = params[:q]
+    query = Admin.all
+    if @q and !@q.empty?
+      query = query.search_by_all @q
+    end
+    @admins = query.by_email.paginate page: params[:page], per_page: 30
     flash[:notice] = 'Sin resultados.' if @admins.empty?
   end
 
