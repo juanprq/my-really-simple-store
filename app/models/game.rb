@@ -12,5 +12,14 @@
 #
 
 class Game < ActiveRecord::Base
+  include TrasheableModel
+  include PgSearch
+
+  validates :name, :image, presence: true
 	
+  scope :by_name, -> {order(:name)}
+  pg_search_scope :search_by_all,
+    against: [:name, :description],
+    using: {tsearch: {any_word: true}}
+
 end
