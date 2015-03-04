@@ -1,10 +1,18 @@
 = form_for @game do |f|
-  - if @game.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@game.errors.count, "error")} prohibited this game from being saved:"
-      %ul
-        - @game.errors.full_messages.each do |msg|
-          %li= msg
+  = render 'shared/error_messages', object: f.object
+  
+  .form-group
+    = f.label :name, 'Nombre'
+    = f.text_field :name, class: 'form-control', placeholder: 'ej. Heroclix'
 
-  .actions
-    = f.submit 'Save'
+  .form-group
+    = f.label :description, 'Descripción'
+    = t.text_area :description
+
+  .form-group
+    = f.label :image, 'Imágen'
+
+= f.submit 'Guardar', class: 'btn btn-success btn-outline'
+- unless @game.new_record?
+  = link_to 'Eliminar', @game, class: 'btn btn-danger btn-outline inactivate', data: {message: 'Se encuentra a punto de inactivar un juego'}
+= link_to 'Atrás', games_path, class: 'btn btn-primary btn-outline'
