@@ -17,7 +17,7 @@ class TrashedRecord < ActiveRecord::Base
     trashed_record = TrashedRecord.new
     trashed_record.record_type = record.class.name
     trashed_record.record_id = record.id
-    # TODO: Record name
+    trashed_record.name = record.name_for_trash
     trashed_record.record_content = record.to_json
     trashed_record.save
   end

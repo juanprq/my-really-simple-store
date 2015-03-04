@@ -8,5 +8,13 @@ module TrasheableModel
     self.active = false
     save
   end
+
+  def name_for_trash
+    name = self.try(:name)
+    if name.nil or name.empty?
+      name = "#{self.class.name}-#{self.id}"
+    end
+    name
+  end
   
 end
