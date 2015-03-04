@@ -21,6 +21,8 @@
 #
 
 class Admin < ActiveRecord::Base
+  include PgSearch
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, 
@@ -35,5 +37,8 @@ class Admin < ActiveRecord::Base
 	has_many :invoices
 
   scope :by_email, -> {order(:email)}
+  pg_search_scope :search_by_all,
+    against: [:name, :identification, :phone, :email],
+    using: {tsearch: {any_word: true}}
 
 end
