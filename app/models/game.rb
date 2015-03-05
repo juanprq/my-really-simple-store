@@ -15,6 +15,8 @@ class Game < ActiveRecord::Base
   include TrasheableModel
   include PgSearch
 
+  mount_uploader :image, ImageUploader
+
   validates :name, :image, presence: true
 	
   scope :by_name, -> {order(:name)}
