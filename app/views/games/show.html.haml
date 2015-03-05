@@ -2,7 +2,7 @@
 
 = info_panel 'id', @game.id
 = info_panel 'Nombre', @game.name
-= info_panel 'Imagen', 'Falta... yo creo que esta va arriba'
+= info_panel 'Imagen', image_tag(@game.image.normal.url)
 = info_panel 'Descripción', @game.description
 
 = link_to 'Editar', edit_game_path(@game), class: 'btn btn-warning btn-outline'
