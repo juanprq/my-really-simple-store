@@ -2,7 +2,12 @@ class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
 
   def index
-    @games = Game.all_actives.paginate page: params[:page], per_page: 30
+    @q = params[:q]
+    query = Game.all_actives
+    if @q and !@q.empty?
+      query = query.search_by_all @q
+    end
+    @games = query.by_name.paginate page: params[:page], per_page: 30
     flash[:notice] = 'Sin resultados.' if @games.empty?
   end
 
