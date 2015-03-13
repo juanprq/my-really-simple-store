@@ -18,10 +18,12 @@ class Game < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   validates :name, :image, presence: true
-	
+
   scope :by_name, -> {order(:name)}
   pg_search_scope :search_by_all,
     against: [:name, :description],
     using: {tsearch: {any_word: true}}
+
+  has_many :clients, through: :client_games
 
 end
