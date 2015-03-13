@@ -1,0 +1,25 @@
+- @view_name = 'Juegos'
+
+= render 'shared/resource_navbar', link_message: 'Agregar juego', resource: Game
+
+- unless @games.empty?
+  .table-responsive
+    %table.table.table-hover
+      %thead
+        %tr
+          %th #
+          %th Nombre
+          %th Acciones
+      %tbody
+        - @games.each do |game|
+          %tr
+            %td= game.id
+            %td= game.name
+            %td
+              = link_to game, class: 'btn btn-primary' do
+                %span.glyphicon.glyphicon-search
+              = link_to edit_game_path(game), class: 'btn btn-warning' do
+                %span.glyphicon.glyphicon-pencil
+              = link_to game, class: 'btn btn-danger inactivate', data: {message: 'Se encuentra a punto de inactivar un juego'} do
+                %span.glyphicon.glyphicon-trash
+  = will_paginate @games

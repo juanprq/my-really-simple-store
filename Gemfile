@@ -21,6 +21,8 @@ gem 'will_paginate-bootstrap'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'email_validator'
 gem 'pg_search'
+gem 'carrierwave'
+gem 'rmagick'
 
 group :development, :test do
   gem 'byebug'
