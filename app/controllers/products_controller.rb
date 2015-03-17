@@ -2,7 +2,12 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.all_actives.by_name.paginate page: params[:page], per_page: 30
+    @q = params[:q]
+    query = Product.all_actives
+    if @q and !@q.empty?
+      query = query.search_by_all @q
+    end
+    @products = query.by_name.paginate page: params[:page], per_page: 30
     flash[:notice] = 'Sin resultados.' if @products.empty?
   end
 
