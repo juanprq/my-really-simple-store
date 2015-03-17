@@ -1,10 +1,37 @@
 = form_for @product do |f|
-  - if @product.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@product.errors.count, "error")} prohibited this product from being saved:"
-      %ul
-        - @product.errors.full_messages.each do |msg|
-          %li= msg
+  = render 'shared/error_messages', object: f.object
 
-  .actions
-    = f.submit 'Save'
+  .form-group
+    = f.label :name, 'Nombre'
+    = f.text_field :name, class: 'form-control', placeholder: 'ej. Booster heroclix'
+
+  .form-group
+    = f.label :barcode, 'Código de barras'
+    = f.text_field :barcode, class: 'form-control', placeholder: 'ej. (30)19<FNC1>(21)123456789012'
+
+  .form-group
+    = f.label :price, 'Precio'
+    .input-group
+      %span.input-group-addon $
+      = f.number_field :price, class: 'form-control', placeholder: 'ej. 30000'
+
+  .form-group
+    = f.label :points, 'Puntos'
+    = f.number_field :points, class: 'form-control', placeholder: 'ej. 1000'
+
+  .form-group
+    = f.label :stock, 'Stock'
+    = f.number_field :stock, class: 'form-control', placeholder: 'ej. 10'
+
+  .form-group
+    = f.label :photo, 'Photo'
+    = f.file_field :photo
+
+  .form-group
+    = f.label :description, 'Descripción'
+    = f.text_area :description, rows: 5, class: 'form-control'
+
+  = f.submit 'Guardar', class: 'btn btn-success btn-outline'
+  - unless @product.new_record?
+    = link_to 'Eliminar', @product, class: 'btn btn-danger btn-outline inactivate', data: {message: 'Se encuentra a punto de inactivar un producto'}
+  = link_to 'Atrás', products_path, class: 'btn btn-primary btn-outline'

@@ -1,6 +1,6 @@
 - @view_name = 'Productos'
 
-= render 'shared/resource_navbar', {link_message: 'Agregar product', resource: Product}
+= render 'shared/resource_navbar', {link_message: 'Agregar producto', resource: Product}
 
 - unless @products.empty?
   .row
@@ -12,7 +12,7 @@
           .panel-body
             .row
               .col-md-5
-                %img.img-thumbnail{src: 'http://placehold.it/300x300'}
+                = image_tag product.photo.thumb.url, class: 'img-thumbnail'
               .col-md-7
                 .table-responsive
                 %table.table
