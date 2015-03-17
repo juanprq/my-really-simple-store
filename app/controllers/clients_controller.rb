@@ -51,6 +51,12 @@ class ClientsController < ApplicationController
     end
 
     def client_params
-      params.require(:client).permit(:name, :identification, :phone, :email)
+      params.require(:client).permit(
+        :name,
+        :identification,
+        :phone,
+        :email,
+        game_ids: []
+      )
     end
 end

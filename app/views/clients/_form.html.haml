@@ -17,6 +17,12 @@
     = f.label :phone, 'Teléfono'
     = f.text_field :phone, class: 'form-control', placeholder: 'ej. 310 3424836'
 
+  .form-group
+    %label Juegos
+    = collection_check_boxes :client, :game_ids, Game.all_actives, :id, :name do |b|
+      .checkbox
+        = b.label { b.check_box + b.text }
+
   = f.submit 'Guardar', class: 'btn btn-success btn-outline'
   - unless @client.new_record?
     = link_to 'Eliminar', @client, class: 'btn btn-danger btn-outline inactivate', data: {message: 'Se encuentra a punto de inactivar un cliente'}

@@ -5,6 +5,7 @@
 = info_panel 'Correo electrónico', @client.email
 = info_panel 'Identificación', @client.identification
 = info_panel 'Teléfono', @client.phone
+= info_panel 'Juegos', @client.games.map{|game| game.name }.join(', ')
 = info_panel 'Fecha de creación', @client.created_at.strftime('%F - %T')
 = info_panel 'Fecha de modificación', @client.updated_at.strftime('%F - %T')
 
