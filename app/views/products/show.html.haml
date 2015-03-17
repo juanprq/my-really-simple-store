@@ -1,6 +1,14 @@
-%p#notice= notice
+- @page_view = 'Ver producto'
 
+= info_panel 'id', @product.id
+= info_panel 'Nombre', @product.name
+= info_panel 'Código de barras', @product.barcode
+= info_panel 'Precio', number_to_currency(@product.price)
+= info_panel 'Puntos', @product.points
+= info_panel 'Stock', @product.stock
+= info_panel 'Foto', image_tag(@product.photo.normal.url)
+= info_panel 'Descipción', @product.description
 
-= link_to 'Edit', edit_product_path(@product)
-\|
-= link_to 'Back', products_path
+= link_to 'Editar', edit_product_path(@product), class: 'btn btn-warning btn-outline'
+= link_to 'Eliminar', @product, class: 'btn btn-danger btn-outline inactivate', data: {message: 'Se encuentra a punto de inactivar un product'}
+= link_to 'Atrás', products_path, class: 'btn btn-primary btn-outline'

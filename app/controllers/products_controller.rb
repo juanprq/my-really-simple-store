@@ -42,7 +42,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.inactivate
     TrashedRecord.create_trash @product
-    redirect_to admins_url, notice: 'Producto inactivado con éxito.'
+    redirect_to products_url, notice: 'Producto inactivado con éxito.'
   end
 
   private
@@ -52,6 +52,14 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params[:product]
+      params[:product].permit(
+        :name,
+        :barcode,
+        :price,
+        :points,
+        :stock,
+        :photo,
+        :description
+      )
     end
 end
