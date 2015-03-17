@@ -24,6 +24,7 @@ class Game < ActiveRecord::Base
     against: [:name, :description],
     using: {tsearch: {any_word: true}}
 
+  has_many :client_games
   has_many :clients, through: :client_games
 
 end

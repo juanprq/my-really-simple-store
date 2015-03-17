@@ -26,6 +26,7 @@ class Client < ActiveRecord::Base
   validates_uniqueness_of :identification, :email
 
 	has_many :invoices
+  has_many :client_games
   has_many :games, through: :client_games
 
   scope :by_name, -> {order(:name)}
